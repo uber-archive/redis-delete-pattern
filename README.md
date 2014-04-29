@@ -35,10 +35,19 @@ redisDeletePattern({
 ```
 
 ## Documentation
-_(Coming soon)_
+`redis-delete-pattern` presents `redisDeletePattern` as its `module.exports`.
 
-## Examples
-_(Coming soon)_
+### `redisDeletePattern(params, cb)`
+Function that deletes list of keys that match a pattern from Redis
+
+- params `Object`, container for parameters
+    - redis `Redis`, instance of [`redis`][Redis] client to interact with
+    - pattern `String`, pattern for [`redis`][] to resolve keys via
+        - Under the hood, this uses the [KEYS][] command
+- cb `Function`, error-first, `(err)`, callback function to handle errors
+    - err `Error|null`, if there was an error, this will be it
+
+[KEYS]: http://redis.io/commands/keys
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
