@@ -35,7 +35,7 @@ exports.client = {
         done(err);
       });
     });
-    after(function cleanupGetValue (done) {
+    after(function cleanupGetValue () {
       delete this.val;
     });
   }

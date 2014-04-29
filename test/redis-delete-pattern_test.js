@@ -8,8 +8,8 @@ describe('A redis client', function () {
   redisUtils.run();
 
   describe('deleting multiple keys via a pattern', function () {
-    redisUtils.set('multi1', 'hai');
-    redisUtils.set('multi2', 'world');
+    redisUtils.client.set('multi1', 'hai');
+    redisUtils.client.set('multi2', 'world');
     before(function deleteKeys (done) {
       redisDeletePattern({
         redis: this.redis,
@@ -18,7 +18,7 @@ describe('A redis client', function () {
     });
 
     describe('the first key', function () {
-      redisUtils.get('multi1');
+      redisUtils.client.get('multi1');
 
       it('is deleted', function () {
         expect(this.val).to.equal(null);
@@ -26,7 +26,7 @@ describe('A redis client', function () {
     });
 
     describe('the second key', function () {
-      redisUtils.get('multi2');
+      redisUtils.client.get('multi2');
 
       it('is deleted', function () {
         expect(this.val).to.equal(null);
