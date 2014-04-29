@@ -1,0 +1,47 @@
+{
+  "name": "redis-delete-pattern",
+  "description": "Delete a set of keys from a pattern in Redis",
+  "version": "0.1.0",
+  "homepage": "https://github.com/uber/redis-delete-pattern",
+  "author": {
+    "name": "Todd Wolfson",
+    "email": "todd@twolfson.com",
+    "url": "http://twolfson.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uber/redis-delete-pattern.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uber/redis-delete-pattern/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/uber/redis-delete-pattern/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/redis-delete-pattern",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt jshint && mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "~1.11.0",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "redis": "~0.10.1",
+    "chai": "~1.9.1"
+  },
+  "keywords": [
+    "redis",
+    "delete",
+    "pattern",
+    "keys"
+  ]
+}
