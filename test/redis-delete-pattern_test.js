@@ -5,20 +5,31 @@ var redisDeletePattern = require('../');
 
 // Start tests
 describe('A redis client', function () {
-  redisUtils.start();
+  redisUtils.run();
 
   describe('deleting multiple keys via a pattern', function () {
     redisUtils.set('multi1', 'hai');
-    redisUtils.set('multi2', 'hai');
+    redisUtils.set('multi2', 'world');
+    before(function deleteKeys (done) {
+      redisDeletePattern({
+        redis: this.redis,
+        pattern: 'multi*'
+      }, done);
+    });
 
     describe('the first key', function () {
-      it('is deleted', function () {
+      redisUtils.get('multi1');
 
+      it('is deleted', function () {
+        expect(this.val).to.equal(null);
       });
     });
-    describe('the second key', function () {
-      it('is deleted', function () {
 
+    describe('the second key', function () {
+      redisUtils.get('multi2');
+
+      it('is deleted', function () {
+        expect(this.val).to.equal(null);
       });
     });
   });
