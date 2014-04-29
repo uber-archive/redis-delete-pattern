@@ -53,10 +53,26 @@ describe('A redis client', function () {
 });
 
 // Edge cases for error handling
-describe.skip('A redis client talking to a downed server', function () {
-  describe('attempting to delete keys via a pattern', function () {
-    it('receives an error', function () {
+describe('A redis client talking to a downed server', function () {
+  redisUtils.createClient();
+  before(function swallowClientErrors () {
+    this.redis.on('error', function noop () {});
+  });
 
+  describe('attempting to delete keys via a pattern', function () {
+    before(function deleteKeys (done) {
+      var that = this;
+      redisDeletePattern({
+        redis: this.redis,
+        pattern: 'econnrefused*'
+      }, function saveResult (err) {
+        that.err = err;
+        done();
+      });
+    });
+
+    it('receives an error', function () {
+      expect(this.err).to.not.equal(null);
     });
   });
 });
