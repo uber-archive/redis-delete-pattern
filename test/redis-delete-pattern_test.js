@@ -34,9 +34,20 @@ describe('A redis client', function () {
     });
   });
 
-  describe.skip('deleting 0 keys via a pattern', function () {
-    it('has no issues', function () {
+  describe('deleting 0 keys via a pattern', function () {
+    before(function deleteNonexistentKeys (done) {
+      var that = this;
+      redisDeletePattern({
+        redis: this.redis,
+        pattern: 'nothingtosee*here'
+      }, function saveResult (err) {
+        that.err = err;
+        done();
+      });
+    });
 
+    it('has no issues', function () {
+      expect(this.err).to.equal(null);
     });
   });
 });
