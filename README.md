@@ -42,7 +42,7 @@ Function that deletes list of keys that match a pattern from Redis
 
 - params `Object`, container for parameters
     - redis `Redis`, instance of [`redis`][Redis] client to interact with
-    - pattern `String`, pattern for [`redis`][] to resolve keys via
+    - pattern `String`, pattern for [`redis`][Redis] to resolve keys via
         - Under the hood, this uses the [KEYS][] command
 - cb `Function`, error-first, `(err)`, callback function to handle errors
     - err `Error|null`, if there was an error, this will be it
